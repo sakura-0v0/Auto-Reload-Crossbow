@@ -18,7 +18,7 @@ import org.lwjgl.glfw.GLFW;
 public class FabricAutoReloadCrossbowMod implements ClientModInitializer {
     public static final KeyMapping.Category KEY_CATEGORY = new KeyMapping.Category(AutoReloadCrossbowMod.id("category"));
     public static final KeyMapping KEY_TOGGLE_AUTO_RELOAD = new KeyMapping(
-            "key.autoreloadcrossbow.toogle_auto_reload",
+            "key.autoreloadcrossbow.toggle_auto_reload",
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_B,
             KEY_CATEGORY
