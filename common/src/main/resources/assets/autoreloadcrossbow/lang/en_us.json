@@ -1,0 +1,8 @@
+{
+  "key.category.autoreloadcrossbow.category": "Auto Reload Crossbow",
+  "key.autoreloadcrossbow.toggle_auto_reload": "Toggle Auto Reload",
+  "autoreloadcrossbow.enabled": "[Auto Reload Crossbow] Enabled auto reload",
+  "autoreloadcrossbow.disabled": "[Auto Reload Crossbow] Disabled auto reload",
+  "config.autoreloadcrossbow.enabled": "Is Enabled",
+  "config.autoreloadcrossbow.can_use_attack_key_to_shoot_crossbow": "Can use attack key to shoot crossbow"
+}

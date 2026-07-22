@@ -1,0 +1,8 @@
+{
+  "key.category.autoreloadcrossbow.category": "弩自动装填",
+  "key.autoreloadcrossbow.toggle_auto_reload": "开关自动装填功能",
+  "autoreloadcrossbow.enabled": "[弩自动装填] 已启用自动装填",
+  "autoreloadcrossbow.disabled": "[弩自动装填] 已禁用自动装填",
+  "config.autoreloadcrossbow.enabled": "已启用",
+  "config.autoreloadcrossbow.can_use_attack_key_to_shoot_crossbow": "可以使用攻击键射击弩"
+}

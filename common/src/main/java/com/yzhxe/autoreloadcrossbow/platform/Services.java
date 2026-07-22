@@ -1,6 +1,6 @@
 package com.yzhxe.autoreloadcrossbow.platform;
 
-import com.yzhxe.autoreloadcrossbow.AutoReloadCrossbowConstants;
+import com.yzhxe.autoreloadcrossbow.AutoReloadCrossbowMod;
 import com.yzhxe.autoreloadcrossbow.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
@@ -12,7 +12,7 @@ public class Services {
         final T loadedService = ServiceLoader.load(clazz, Services.class.getClassLoader())
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
-        AutoReloadCrossbowConstants.LOG.debug("Loaded {} for service {}", loadedService, clazz);
+        AutoReloadCrossbowMod.LOG.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }

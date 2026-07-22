@@ -11,12 +11,13 @@
         "homepage": "https://fabricmc.net/",
         "sources": "https://github.com/FabricMC/fabric-example-mod"
     },
+    "accessWidener": "autoreloadcrossbow.accesswidener",
     "license": "${license}",
     "icon": "icon.png",
     "environment": "client",
     "entrypoints": {
         "client": [
-          "com.yzhxe.autoreloadcrossbow.AutoReloadCrossbowMod"
+            "com.yzhxe.autoreloadcrossbow.FabricAutoReloadCrossbowMod"
         ]
     },
     "mixins": [
