@@ -1,0 +1,49 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+          cache: gradle
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Grant execute permission
+        run: chmod +x gradlew
+
+      - name: Build
+        run: ./gradlew build
+
+      - name: Upload Fabric Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fabric
+          path: fabric/build/libs/*.jar
+          if-no-files-found: error
+
+      - name: Upload NeoForge Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: neoforge
+          path: neoforge/build/libs/*.jar
+          if-no-files-found: error
