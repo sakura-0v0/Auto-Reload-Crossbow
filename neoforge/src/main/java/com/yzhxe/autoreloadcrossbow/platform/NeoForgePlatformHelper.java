@@ -44,6 +44,12 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
     }
 
     @Override
+    public void toggleAttackKeyShoot() {
+        NeoForgeConfig.CAN_USE_ATTACK_KEY_TO_SHOOT_CROSSBOW.set(!NeoForgeConfig.CAN_USE_ATTACK_KEY_TO_SHOOT_CROSSBOW.get());
+        IPlatformHelper.super.toggleAttackKeyShoot();
+    }
+
+    @Override
     public void incrementClickTick(KeyMapping key) {
         key.clickCount++;
     }

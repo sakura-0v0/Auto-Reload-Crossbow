@@ -3,6 +3,9 @@
   "key.autoreloadcrossbow.toggle_auto_reload": "Toggle Auto Reload",
   "autoreloadcrossbow.enabled": "[Auto Reload Crossbow] Enabled auto reload",
   "autoreloadcrossbow.disabled": "[Auto Reload Crossbow] Disabled auto reload",
+  "key.autoreloadcrossbow.toggle_attack_key_shoot": "Toggle Attack Key Shooting",
+  "autoreloadcrossbow.attack_key_shoot.enabled": "[Auto Reload Crossbow] Enabled attack key shooting",
+  "autoreloadcrossbow.attack_key_shoot.disabled": "[Auto Reload Crossbow] Disabled attack key shooting",
   "config.autoreloadcrossbow.enabled": "Is Enabled",
   "config.autoreloadcrossbow.can_use_attack_key_to_shoot_crossbow": "Can use attack key to shoot crossbow"
 }

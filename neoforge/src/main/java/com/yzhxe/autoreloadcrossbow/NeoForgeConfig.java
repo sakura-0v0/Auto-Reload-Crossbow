@@ -9,7 +9,7 @@ public class NeoForgeConfig {
             .define("enabled", true);
     public static final ModConfigSpec.BooleanValue CAN_USE_ATTACK_KEY_TO_SHOOT_CROSSBOW = BUILDER
             .translation("config.autoreloadcrossbow.can_use_attack_key_to_shoot_crossbow")
-            .define("can_use_attack_key_to_shoot_crossbow", false);
+            .define("can_use_attack_key_to_shoot_crossbow", true);
 
     static final ModConfigSpec SPEC = BUILDER.build();
 }

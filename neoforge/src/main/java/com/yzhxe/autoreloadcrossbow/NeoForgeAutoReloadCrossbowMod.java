@@ -28,6 +28,11 @@ public class NeoForgeAutoReloadCrossbowMod {
             GLFW.GLFW_KEY_B,
             KEY_CATEGORY
     ));
+    public static final Lazy<KeyMapping> TOGGLE_ATTACK_KEY_SHOOT = Lazy.of(() -> new KeyMapping(
+            "key.autoreloadcrossbow.toggle_attack_key_shoot",
+            GLFW.GLFW_KEY_N,
+            KEY_CATEGORY
+    ));
 
     public NeoForgeAutoReloadCrossbowMod(ModContainer container, IEventBus eventBus) {
         AutoReloadCrossbowMod.init();
@@ -40,12 +45,17 @@ public class NeoForgeAutoReloadCrossbowMod {
     public void registerKeyMappings(RegisterKeyMappingsEvent event) {
         event.registerCategory(KEY_CATEGORY);
         event.register(TOGGLE_AUTO_RELOAD.get());
+        event.register(TOGGLE_ATTACK_KEY_SHOOT.get());
     }
 
     @SubscribeEvent
     public void clientPostTick(ClientTickEvent.Post event) {
         while (TOGGLE_AUTO_RELOAD.get().consumeClick()) {
             Services.PLATFORM.toggleEnabledByKey();
+        }
+
+        while (TOGGLE_ATTACK_KEY_SHOOT.get().consumeClick()) {
+            Services.PLATFORM.toggleAttackKeyShoot();
         }
 
         AutoReloadCrossbowMod.clientPostTick();

@@ -33,9 +33,20 @@ public class FabricPlatformHelper implements IPlatformHelper {
     }
 
     @Override
+    public boolean canUseAttackKeyToShootCrossbow() {
+        return FabricAutoReloadCrossbowMod.ENABLED_ATTACK_KEY_SHOOT;
+    }
+
+    @Override
     public void toggleEnabledByKey() {
         FabricAutoReloadCrossbowMod.ENABLED_AUTO_RELOAD = !FabricAutoReloadCrossbowMod.ENABLED_AUTO_RELOAD;
         IPlatformHelper.super.toggleEnabledByKey();
+    }
+
+    @Override
+    public void toggleAttackKeyShoot() {
+        FabricAutoReloadCrossbowMod.ENABLED_ATTACK_KEY_SHOOT = !FabricAutoReloadCrossbowMod.ENABLED_ATTACK_KEY_SHOOT;
+        IPlatformHelper.super.toggleAttackKeyShoot();
     }
 
     @Override

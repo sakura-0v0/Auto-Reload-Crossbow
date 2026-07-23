@@ -48,6 +48,16 @@ public interface IPlatformHelper {
         player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.65f, 2.0f);
     }
 
+    default void toggleAttackKeyShoot() {
+        LocalPlayer player = Minecraft.getInstance().player;
+        if (player == null) return;
+        boolean attackKeyShoot = canUseAttackKeyToShootCrossbow();
+        Component component = Component.translatable("autoreloadcrossbow.attack_key_shoot." + (attackKeyShoot ? "enabled" : "disabled"))
+                .withStyle(attackKeyShoot ? ChatFormatting.GREEN : ChatFormatting.RED);
+        player.sendSystemMessage(component);
+        player.playSound(SoundEvents.EXPERIENCE_ORB_PICKUP, 0.65f, 2.0f);
+    }
+
     /**
      * Gets the name of the environment type as a string.
      *
