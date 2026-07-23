@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Minecraft.class)
 public abstract class MinecraftMixin {
 
-    @Inject(method = "startAttack()Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;get(Lnet/minecraft/core/component/DataComponentType;)Ljava/lang/Object;", ordinal = 0), cancellable = true)
-    public void shootCrossbowByAttack(CallbackInfoReturnable<Boolean> cir, @Local(name = "heldItem") ItemStack heldItem) {
+    @Inject(method = "startAttack()Z", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/phys/HitResult;getType()Lnet/minecraft/world/phys/HitResult$Type;"), cancellable = true)
+    public void shootCrossbowByAttack(CallbackInfoReturnable<Boolean> cir, @Local ItemStack heldItem) {
         if (!Services.PLATFORM.canUseAttackKeyToShootCrossbow()) return;
 
         if (heldItem.is(Items.CROSSBOW) && CrossbowItem.isCharged(heldItem)) {

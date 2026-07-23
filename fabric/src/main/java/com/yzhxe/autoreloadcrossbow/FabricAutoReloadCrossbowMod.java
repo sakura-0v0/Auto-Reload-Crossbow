@@ -6,31 +6,23 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
-import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
-import net.minecraft.ChatFormatting;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import org.lwjgl.glfw.GLFW;
 
 @Environment(EnvType.CLIENT)
 public class FabricAutoReloadCrossbowMod implements ClientModInitializer {
-    public static final KeyMapping.Category KEY_CATEGORY = new KeyMapping.Category(AutoReloadCrossbowMod.id("category"));
     public static final KeyMapping KEY_TOGGLE_AUTO_RELOAD = new KeyMapping(
             "key.autoreloadcrossbow.toggle_auto_reload",
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_B,
-            KEY_CATEGORY
+            "key.category.autoreloadcrossbow.category"
     );
     public static final KeyMapping KEY_TOGGLE_ATTACK_KEY_SHOOT = new KeyMapping(
             "key.autoreloadcrossbow.toggle_attack_key_shoot",
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_N,
-            KEY_CATEGORY
+            "key.category.autoreloadcrossbow.category"
     );
     public static boolean ENABLED_AUTO_RELOAD = true;
     public static boolean ENABLED_ATTACK_KEY_SHOOT = true;
@@ -38,10 +30,10 @@ public class FabricAutoReloadCrossbowMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         AutoReloadCrossbowMod.init();
-        KeyMappingHelper.registerKeyMapping(KEY_TOGGLE_AUTO_RELOAD);
-        KeyMappingHelper.registerKeyMapping(KEY_TOGGLE_ATTACK_KEY_SHOOT);
+        KeyBindingHelper.registerKeyBinding(KEY_TOGGLE_AUTO_RELOAD);
+        KeyBindingHelper.registerKeyBinding(KEY_TOGGLE_ATTACK_KEY_SHOOT);
 
-        ClientTickEvents.END_LEVEL_TICK.register((_) -> {
+        ClientTickEvents.END_WORLD_TICK.register((level) -> {
             while (KEY_TOGGLE_AUTO_RELOAD.consumeClick()) {
                 Services.PLATFORM.toggleEnabledByKey();
             }

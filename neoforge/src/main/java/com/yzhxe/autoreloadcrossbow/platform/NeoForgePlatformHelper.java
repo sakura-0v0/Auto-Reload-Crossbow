@@ -3,13 +3,10 @@ package com.yzhxe.autoreloadcrossbow.platform;
 import com.yzhxe.autoreloadcrossbow.NeoForgeConfig;
 import com.yzhxe.autoreloadcrossbow.platform.services.IPlatformHelper;
 import net.minecraft.client.KeyMapping;
-import net.minecraft.resources.Identifier;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.loading.FMLLoader;
-import org.apache.logging.log4j.util.Lazy;
 
 import java.util.*;
-import java.util.function.Supplier;
 
 public class NeoForgePlatformHelper implements IPlatformHelper {
     @Override
@@ -24,7 +21,7 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean isDevelopmentEnvironment() {
-        return !FMLLoader.getCurrent().isProduction();
+        return !FMLLoader.isProduction();
     }
 
     @Override

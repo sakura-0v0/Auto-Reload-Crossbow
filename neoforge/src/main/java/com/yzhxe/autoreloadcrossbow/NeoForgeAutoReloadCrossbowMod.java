@@ -22,16 +22,15 @@ import org.lwjgl.glfw.GLFW;
 
 @Mod(value = AutoReloadCrossbowMod.MOD_ID, dist = Dist.CLIENT)
 public class NeoForgeAutoReloadCrossbowMod {
-    public static final KeyMapping.Category KEY_CATEGORY = new KeyMapping.Category(AutoReloadCrossbowMod.id("category"));
     public static final Lazy<KeyMapping> TOGGLE_AUTO_RELOAD = Lazy.of(() -> new KeyMapping(
             "key.autoreloadcrossbow.toggle_auto_reload",
             GLFW.GLFW_KEY_B,
-            KEY_CATEGORY
+            "key.category.autoreloadcrossbow.category"
     ));
     public static final Lazy<KeyMapping> TOGGLE_ATTACK_KEY_SHOOT = Lazy.of(() -> new KeyMapping(
             "key.autoreloadcrossbow.toggle_attack_key_shoot",
             GLFW.GLFW_KEY_N,
-            KEY_CATEGORY
+            "key.category.autoreloadcrossbow.category"
     ));
 
     public NeoForgeAutoReloadCrossbowMod(ModContainer container, IEventBus eventBus) {
@@ -43,7 +42,6 @@ public class NeoForgeAutoReloadCrossbowMod {
     }
 
     public void registerKeyMappings(RegisterKeyMappingsEvent event) {
-        event.registerCategory(KEY_CATEGORY);
         event.register(TOGGLE_AUTO_RELOAD.get());
         event.register(TOGGLE_ATTACK_KEY_SHOOT.get());
     }

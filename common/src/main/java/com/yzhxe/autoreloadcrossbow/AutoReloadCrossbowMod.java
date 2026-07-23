@@ -3,7 +3,7 @@ package com.yzhxe.autoreloadcrossbow;
 import com.yzhxe.autoreloadcrossbow.platform.Services;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -41,10 +41,14 @@ public class AutoReloadCrossbowMod {
         if (player == null) return false;
         ItemStack stack = player.getMainHandItem();
 
+        if (chargingCrossbow && player.getUseItemRemainingTicks() <= 0) {
+            return false;
+        }
+
         return stack.is(Items.CROSSBOW) && !CrossbowItem.isCharged(stack);
     }
 
-    public static Identifier id(String path) {
-        return Identifier.fromNamespaceAndPath(MOD_ID, path);
+    public static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 }
