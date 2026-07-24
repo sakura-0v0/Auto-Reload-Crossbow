@@ -1,17 +1,16 @@
 package com.yzhxe.autoreloadcrossbow.platform;
 
-import com.yzhxe.autoreloadcrossbow.NeoForgeConfig;
+import com.yzhxe.autoreloadcrossbow.ForgeConfig;
+import com.yzhxe.autoreloadcrossbow.mixin.KeyMappingAccessor;
 import com.yzhxe.autoreloadcrossbow.platform.services.IPlatformHelper;
 import net.minecraft.client.KeyMapping;
-import net.neoforged.fml.ModList;
-import net.neoforged.fml.loading.FMLLoader;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.loading.FMLLoader;
 
-import java.util.*;
-
-public class NeoForgePlatformHelper implements IPlatformHelper {
+public class ForgePlatformHelper implements IPlatformHelper {
     @Override
     public String getPlatformName() {
-        return "NeoForge";
+        return "Forge";
     }
 
     @Override
@@ -26,28 +25,29 @@ public class NeoForgePlatformHelper implements IPlatformHelper {
 
     @Override
     public boolean isAutoReloadEnabled() {
-        return NeoForgeConfig.ENABLED.getAsBoolean();
+        return ForgeConfig.ENABLED.get();
     }
 
     @Override
     public boolean canUseAttackKeyToShootCrossbow() {
-        return NeoForgeConfig.CAN_USE_ATTACK_KEY_TO_SHOOT_CROSSBOW.getAsBoolean();
+        return ForgeConfig.CAN_USE_ATTACK_KEY_TO_SHOOT_CROSSBOW.get();
     }
 
     @Override
     public void toggleEnabledByKey() {
-        NeoForgeConfig.ENABLED.set(!NeoForgeConfig.ENABLED.get());
+        ForgeConfig.ENABLED.set(!ForgeConfig.ENABLED.get());
         IPlatformHelper.super.toggleEnabledByKey();
     }
 
     @Override
     public void toggleAttackKeyShoot() {
-        NeoForgeConfig.CAN_USE_ATTACK_KEY_TO_SHOOT_CROSSBOW.set(!NeoForgeConfig.CAN_USE_ATTACK_KEY_TO_SHOOT_CROSSBOW.get());
+        ForgeConfig.CAN_USE_ATTACK_KEY_TO_SHOOT_CROSSBOW.set(!ForgeConfig.CAN_USE_ATTACK_KEY_TO_SHOOT_CROSSBOW.get());
         IPlatformHelper.super.toggleAttackKeyShoot();
     }
 
     @Override
     public void incrementClickTick(KeyMapping key) {
-        key.clickCount++;
+        KeyMappingAccessor accessor = (KeyMappingAccessor) key;
+        accessor.setClickCount(accessor.getClickCount() + 1);
     }
 }

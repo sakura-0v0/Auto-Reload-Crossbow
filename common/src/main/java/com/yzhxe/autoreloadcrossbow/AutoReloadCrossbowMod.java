@@ -15,15 +15,24 @@ public class AutoReloadCrossbowMod {
     public static final String MOD_NAME = "Auto Reload Crossbow";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
     private static boolean chargingCrossbow;
+    private static int forgeCooldown; // Fix on forge the crossbow will always charge bug
 
     public static void init() {
     }
 
     public static void clientPostTick() {
+        if (forgeCooldown > 0) {
+            forgeCooldown--;
+            return;
+        }
+
         if (Services.PLATFORM.isAutoReloadEnabled() && canReloadCrossbow()) {
             setChargingCrossbow(true);
         } else if (chargingCrossbow) {
             setChargingCrossbow(false);
+            if (Services.PLATFORM.getPlatformName().equals("Forge")) {
+                forgeCooldown = 1;
+            }
         }
     }
 
@@ -49,6 +58,6 @@ public class AutoReloadCrossbowMod {
     }
 
     public static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+        return new ResourceLocation(MOD_ID, path);
     }
 }
