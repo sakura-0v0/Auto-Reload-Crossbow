@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "com.yzhxe.autoreloadcrossbow.mixin",
   "compatibilityLevel": "JAVA_17",
+  "refmap": "${mod_id}.refmap.json",
   "mixins": [],
   "client": [
     "MinecraftMixin"
@@ -10,9 +11,6 @@
   "server": [],
   "injectors": {
     "defaultRequire": 1
-  },
-  "overwrites": {
-    "requireAnnotations": true
   }
 }
 
